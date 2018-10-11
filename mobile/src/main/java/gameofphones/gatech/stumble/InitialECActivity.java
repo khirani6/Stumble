@@ -9,51 +9,51 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class InitialECActivity extends AppCompatActivity {
 
-    private EditText emailField;
-    private EditText passwordField;
-    private Button mLoginButton;
-    private Button mSignUpButton;
+    private EditText firstNameField;
+    private EditText lastNameField;
+    private EditText phoneNumField;
+
+    private Button mEnterButton;
+    private Button mSetUpLaterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_initial_ec);
 
-        emailField = findViewById(R.id.email_field);
-        passwordField = findViewById(R.id.password_field);
-        mLoginButton = findViewById(R.id.log_in_button);
-        mSignUpButton = findViewById(R.id.sign_up_button);
+        firstNameField = findViewById(R.id.first_name_field);
+        lastNameField = findViewById(R.id.last_name_field);
+        phoneNumField = findViewById(R.id.phoneNumber);
 
-        mLoginButton.setOnClickListener(new View.OnClickListener() {
+        mEnterButton = findViewById(R.id.enter_button);
+        mSetUpLaterButton = findViewById(R.id.set_up_later_button);
+
+        mEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isEmpty(emailField) || isEmpty(passwordField)) {
+                if (isEmpty(firstNameField) || isEmpty(lastNameField) || isEmpty(phoneNumField)) {
                     Context context = getApplicationContext();
                     CharSequence text = "Please fill in all fields";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
-                    Intent intent = new Intent(MainActivity.this, InitialECActivity.class);
+                    Intent intent = new Intent(InitialECActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
-            }
-        });
 
-        mSignUpButton.setOnClickListener(new View.OnClickListener() {
+            }
+
+        });
+        mSetUpLaterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(InitialECActivity.this, HomeActivity.class);
                 startActivity(intent);
-
             }
-
         });
-
-
     }
 
     private boolean isEmpty(EditText text) {
