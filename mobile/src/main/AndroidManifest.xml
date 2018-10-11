@@ -21,7 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity"
+        <activity
+            android:name=".SignUpActivity"
+            android:theme="@style/NoStatusBarTheme" />
+        <activity
+            android:name=".InitialECActivity"
+            android:theme="@style/NoStatusBarTheme"></activity>
+        <activity android:name=".HomeActivity"
             android:theme="@style/NoStatusBarTheme"></activity>
     </application>
 
