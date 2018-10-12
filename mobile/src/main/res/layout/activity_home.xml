@@ -7,4 +7,21 @@
     android:background="@color/stumbleBackground"
     tools:context=".HomeActivity">
 
+    <ImageButton
+        android:id="@+id/edit_ec_button"
+        android:layout_width="139dp"
+        android:layout_height="134dp"
+        android:layout_marginBottom="361dp"
+        android:layout_marginEnd="229dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="edit_emergency_contacts"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/edit_emergency_contacts" />
 </android.support.constraint.ConstraintLayout>
