@@ -40,7 +40,7 @@ public class InitialECActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
-                    Intent intent = new Intent(InitialECActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(InitialECActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
 

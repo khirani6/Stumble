@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
-                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SignUpActivity.this, InitialECActivity.class);
                     startActivity(intent);
                 }
 
