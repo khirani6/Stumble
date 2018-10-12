@@ -14,10 +14,10 @@ public class InitialECActivity extends AppCompatActivity {
     private EditText firstNameField;
     private EditText lastNameField;
     private EditText phoneNumField;
+    private EditText smsNumField;
+
 
     private Button mEnterButton;
-    private Button mSetUpLaterButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +25,14 @@ public class InitialECActivity extends AppCompatActivity {
 
         firstNameField = findViewById(R.id.first_name_field);
         lastNameField = findViewById(R.id.last_name_field);
-        phoneNumField = findViewById(R.id.phoneNumber);
+        phoneNumField = findViewById(R.id.callPhoneNumber);
+        smsNumField = findViewById(R.id.smsPhoneNumber);
 
         mEnterButton = findViewById(R.id.enter_button);
-        mSetUpLaterButton = findViewById(R.id.set_up_later_button);
-
         mEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isEmpty(firstNameField) || isEmpty(lastNameField) || isEmpty(phoneNumField)) {
+                if (isEmpty(firstNameField) || isEmpty(lastNameField) || isEmpty(phoneNumField) || isEmpty(smsNumField)) {
                     Context context = getApplicationContext();
                     CharSequence text = "Please fill in all fields";
                     int duration = Toast.LENGTH_SHORT;
@@ -46,13 +45,6 @@ public class InitialECActivity extends AppCompatActivity {
 
             }
 
-        });
-        mSetUpLaterButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InitialECActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
         });
     }
 
