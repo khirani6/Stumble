@@ -87,7 +87,7 @@
         android:layout_height="62dp"
         android:layout_marginBottom="48dp"
         android:layout_marginTop="27dp"
-        android:text="Sign Up"
+        android:text="Continue"
         android:textColor="@color/stumbleBackground"
         android:textSize="30sp"
         android:textStyle="bold"
