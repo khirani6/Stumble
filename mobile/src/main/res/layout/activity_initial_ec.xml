@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/first_name_field" />
 
     <EditText
-        android:id="@+id/phoneNumber"
+        android:id="@+id/callPhoneNumber"
         android:layout_width="306dp"
         android:layout_height="56dp"
         android:layout_marginTop="24dp"
@@ -74,13 +74,31 @@
         android:id="@+id/enter_button"
         android:layout_width="210dp"
         android:layout_height="70dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="29dp"
+        android:layout_marginTop="26dp"
         android:text="Submit"
         android:textColor="@color/stumbleBackground"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/smsPhoneNumber" />
+
+    <EditText
+        android:id="@+id/smsPhoneNumber"
+        android:layout_width="306dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="21dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="SMS Number"
+        android:inputType="phone"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callPhoneNumber" />
 
 </android.support.constraint.ConstraintLayout>
