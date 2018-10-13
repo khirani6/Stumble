@@ -14,43 +14,51 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.net.URL;
 
-public class SignUpActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText emailField;
     private EditText passwordField;
-    private EditText firstNameField;
-    private EditText lastNameField;
+    private Button mLoginButton;
     private Button mSignUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_login);
 
         emailField = findViewById(R.id.email_field);
         passwordField = findViewById(R.id.password_field);
-        firstNameField = findViewById(R.id.first_name_field);
-        lastNameField = findViewById(R.id.last_name_field);
-
+        mLoginButton = findViewById(R.id.log_in_button);
         mSignUpButton = findViewById(R.id.sign_up_button);
 
-        mSignUpButton.setOnClickListener(new View.OnClickListener() {
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isEmpty(emailField) || isEmpty(passwordField) || isEmpty(firstNameField) || isEmpty(lastNameField)) {
+                if (isEmpty(emailField) || isEmpty(passwordField)) {
                     Context context = getApplicationContext();
                     CharSequence text = "Please fill in all fields";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
-                    Intent intent = new Intent(SignUpActivity.this, InitialECActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        mSignUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
 
             }
 
         });
+
+
     }
 
     private boolean isEmpty(EditText text) {
@@ -60,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
         return true;
     }
 
-    private class SignUpTask extends AsyncTask<String, Void, SignUpTask.Result> {
+    private class LoginTask extends AsyncTask<String, Void, LoginTask.Result> {
         /**
          * Wrapper class that serves as a union of a result value and an exception. When the download
          * task has completed, either the result value or exception can be a non-null value.
@@ -81,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
          * Defines work to perform on the background thread.
          */
         @Override
-        protected SignUpTask.Result doInBackground(String... urls) {
+        protected LoginTask.Result doInBackground(String... urls) {
             Result result = null;
             if (!isCancelled() && urls != null && urls.length > 0) {
                 String urlString = urls[0];
@@ -106,14 +114,13 @@ public class SignUpActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Result result) {
             if (result.mResultValue != null) {
-                Log.i("SignUpResult", result.mResultValue);
+                Log.i("LoginResult", result.mResultValue);
             }
 
             if (result.mException != null) {
-                Log.i("SignUpResult", result.mException.getMessage());
+                Log.i("LoginResult", result.mException.getMessage());
             }
         }
-
 
     }
 }
