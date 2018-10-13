@@ -2,11 +2,20 @@ package gameofphones.gatech.stumble;
 
 import android.support.annotation.Nullable;
 
+import com.google.gson.annotations.SerializedName;
+
 public class EmergencyContact {
 
+    @SerializedName("first_name")
     private String mFirstName;
+
+    @SerializedName("last_name")
     private String mLastName;
+
+    @SerializedName("voice_phone_number")
     @Nullable private String mVoicePhoneNumber;
+
+    @SerializedName("sms_phone_number")
     @Nullable private String mSMSPhoneNumber;
 
     /**
