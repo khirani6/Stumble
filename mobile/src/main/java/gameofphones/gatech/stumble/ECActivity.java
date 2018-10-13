@@ -10,6 +10,8 @@ public class ECActivity extends AppCompatActivity {
 
     private ImageButton mAddButton;
 
+    //Been using this tutorial for doing this: https://appsandbiscuits.com/listview-tutorial-android-12-ccef4ead27cc
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

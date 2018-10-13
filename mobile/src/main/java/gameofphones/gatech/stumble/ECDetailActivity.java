@@ -15,6 +15,7 @@ public class ECDetailActivity extends AppCompatActivity {
     private ImageButton editButton;
     boolean editing = false;
 
+    //Been using this tutorial for doing this: https://appsandbiscuits.com/listview-tutorial-android-12-ccef4ead27cc
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
