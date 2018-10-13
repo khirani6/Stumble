@@ -14,7 +14,6 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoStatusBarTheme">
-            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +25,14 @@
             android:theme="@style/NoStatusBarTheme" />
         <activity
             android:name=".InitialECActivity"
-            android:theme="@style/NoStatusBarTheme"></activity>
-        <activity android:name=".HomeActivity"
-            android:theme="@style/NoStatusBarTheme"></activity>
+            android:theme="@style/NoStatusBarTheme" />
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/NoStatusBarTheme" />
+        <activity
+            android:name=".ECActivity"
+            android:label="Emergency Contacts"/>
+
     </application>
 
 </manifest>
