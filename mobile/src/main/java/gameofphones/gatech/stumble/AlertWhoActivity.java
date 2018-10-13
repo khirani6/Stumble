@@ -11,6 +11,8 @@ public class AlertWhoActivity extends AppCompatActivity {
 
     String[] templateNamesArr = {"Komal Hirani", "Emergency Room"};
 
+    final String alertString = "This is a test alert sent by User";
+
     ListView listView;
 
     @Override
