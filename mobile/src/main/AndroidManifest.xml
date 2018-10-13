@@ -38,6 +38,13 @@
         <activity
             android:name=".AddECActivity"
             android:label="Add Emergency Contact" />
+        <activity android:name=".AlertActivity"
+            android:theme="@style/NoStatusBarTheme"/>
+        <activity android:name=".AlertWhoActivity"
+            android:label="Sent Alert To:"/>
+        <activity
+            android:name=".AlertSentActivity"
+            android:theme="@style/NoStatusBarTheme" />
     </application>
 
 </manifest>
