@@ -33,8 +33,11 @@
             android:theme="@style/NoStatusBarTheme" />
         <activity
             android:name=".ECActivity"
-            android:label="Emergency Contacts"/>
-
+            android:label="Emergency Contacts" />
+        <activity android:name=".ECDetailActivity" />
+        <activity
+            android:name=".AddECActivity"
+            android:label="Add Emergency Contact" />
     </application>
 
 </manifest>
