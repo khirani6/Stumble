@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="152dp"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="none"
         android:textColor="@color/white"
         android:backgroundTint="@color/white"
         android:textSize="18sp"
@@ -82,11 +82,22 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="152dp"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="none"
         android:textColor="@color/white"
         android:backgroundTint="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="176dp" />
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/edit_button"
+        tools:layout_editor_absoluteX="281dp"
+        tools:layout_editor_absoluteY="400dp" />
 
 </android.support.constraint.ConstraintLayout>
