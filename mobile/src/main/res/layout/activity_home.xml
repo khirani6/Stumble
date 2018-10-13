@@ -9,26 +9,74 @@
 
     <ImageButton
         android:id="@+id/edit_ec_button"
-        android:layout_width="205dp"
-        android:layout_height="134dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:contentDescription="edit_emergency_contacts"
         android:scaleType="fitCenter"
         android:src="@drawable/ec_selector"
-        app:srcCompat="@drawable/edit_emergency_contacts"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="75dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/edit_emergency_contacts" />
 
     <ImageButton
         android:id="@+id/er_button"
-        android:layout_width="205dp"
-        android:layout_height="134dp"
-        android:layout_marginBottom="300dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="60dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
+        android:src="@drawable/er_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/edit_ec_button"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/er_button" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="262dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/stumble_logo_mobile" />
+
+    <ImageButton
+        android:id="@+id/alert_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="16dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/alert_selector"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/er_button"
-        tools:layout_editor_absoluteX="178dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/alert_button" />
+
+    <ImageButton
+        android:id="@+id/settings_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="24dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/settings_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/alert_button"
+        app:srcCompat="@drawable/settings_button" />
 </android.support.constraint.ConstraintLayout>
