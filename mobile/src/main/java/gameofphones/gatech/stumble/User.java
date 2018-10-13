@@ -1,13 +1,20 @@
 package gameofphones.gatech.stumble;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
+    @SerializedName("first_name")
     private String mFirstName;
+
+    @SerializedName("last_name")
     private String mLastName;
+    @SerializedName("email")
     private String mEmail;
+    @SerializedName("emergency_contacts")
     private List<EmergencyContact> mEmergencyContacts;
 
     public User(String firstName, String lastName, String email) {

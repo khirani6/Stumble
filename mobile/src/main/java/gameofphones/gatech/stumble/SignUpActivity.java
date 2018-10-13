@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -44,6 +46,13 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
+                    String firstName = firstNameField.getText().toString();
+                    String lastName = lastNameField.getText().toString();
+                    String email = emailField.getText().toString();
+                    User user = new User(firstName, lastName, email);
+                    String userJson = new Gson().toJson(user);
+                    Log.d("SignUpJson", userJson);
+
                     Intent intent = new Intent(SignUpActivity.this, InitialECActivity.class);
                     startActivity(intent);
                 }
