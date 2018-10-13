@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 public class ECListAdapter extends ArrayAdapter {
 
+
+    //been referencing from this tutorial: https://appsandbiscuits.com/listview-tutorial-android-12-ccef4ead27cc
+
     //to reference the Activity
     private final Activity context;
 
