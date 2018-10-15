@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,14 +39,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isEmpty(emailField) || isEmpty(passwordField)) {
+                    CharSequence text = getString(R.string.empty_fields_error);
                     Context context = getApplicationContext();
-                    CharSequence text = "Please fill in all fields";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
+                    HashMap<String, String> emailMap = new HashMap<>();
+                    emailMap.put("email", emailField.getText().toString());
+                    Gson gson = new Gson();
+                    String loginBody = gson.toJson(emailMap);
+                    new LoginTask().execute(NetworkConnection.FIND_USER, loginBody);
                 }
             }
         });
@@ -57,8 +63,6 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
-
-
     }
 
     private boolean isEmpty(EditText text) {
@@ -89,13 +93,14 @@ public class LoginActivity extends AppCompatActivity {
          * Defines work to perform on the background thread.
          */
         @Override
-        protected LoginTask.Result doInBackground(String... urls) {
+        protected LoginTask.Result doInBackground(String... params) {
             Result result = null;
-            if (!isCancelled() && urls != null && urls.length > 0) {
-                String urlString = urls[0];
+            if (!isCancelled() && params != null && params.length > 0) {
+                String urlString = params[0];
                 try {
                     URL url = new URL(urlString);
-                    String resultString = NetworkConnection.connect(url);
+                    String body = params[1];
+                    String resultString = NetworkConnection.connect(url, NetworkConnection.POST, body);
                     if (resultString != null) {
                         result = new Result(resultString);
                     } else {
@@ -113,12 +118,25 @@ public class LoginActivity extends AppCompatActivity {
          */
         @Override
         protected void onPostExecute(Result result) {
-            if (result.mResultValue != null) {
-                Log.i("LoginResult", result.mResultValue);
+            String json = result.mResultValue;
+            if (json != null) {
+                Log.i("LoginResult", "Success: " + json);
+                Log.i("LoginResult", Integer.toString(json.length()));
+
+                if (json.length() > 2) {
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            getString(R.string.login_error),
+                            Toast.LENGTH_SHORT).show();
+                }
             }
 
             if (result.mException != null) {
-                Log.i("LoginResult", result.mException.getMessage());
+                Log.i("LoginResult", "Error: " + result.mException.getMessage());
+                Log.e("SignUpResult", result.mException.toString(), result.mException);
             }
         }
 

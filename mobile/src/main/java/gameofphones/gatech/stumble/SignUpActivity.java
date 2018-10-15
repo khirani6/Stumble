@@ -41,7 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (isEmpty(emailField) || isEmpty(passwordField) || isEmpty(firstNameField) || isEmpty(lastNameField)) {
                     Context context = getApplicationContext();
-                    CharSequence text = "Please fill in all fields";
+                    CharSequence text = getString(R.string.empty_fields_error);
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
@@ -51,15 +51,12 @@ public class SignUpActivity extends AppCompatActivity {
                     String email = emailField.getText().toString();
                     User user = new User(firstName, lastName, email);
                     String userJson = new Gson().toJson(user);
-                    Log.d("SignUpJson", userJson);
-
-                    Intent intent = new Intent(SignUpActivity.this, InitialECActivity.class);
-                    startActivity(intent);
+                    new SignUpTask().execute(NetworkConnection.CREATE_USER, userJson);
                 }
-
             }
 
         });
+
     }
 
     private boolean isEmpty(EditText text) {
@@ -88,15 +85,19 @@ public class SignUpActivity extends AppCompatActivity {
 
         /**
          * Defines work to perform on the background thread.
+         * 0 - URL
+         * 1 - request body
          */
         @Override
-        protected SignUpTask.Result doInBackground(String... urls) {
+        protected SignUpTask.Result doInBackground(String... params) {
             Result result = null;
-            if (!isCancelled() && urls != null && urls.length > 0) {
-                String urlString = urls[0];
+
+            if (!isCancelled() && params != null && params.length > 0) {
+                String urlString = params[0];
                 try {
                     URL url = new URL(urlString);
-                    String resultString = NetworkConnection.connect(url);
+                    String body = params[1];
+                    String resultString = NetworkConnection.connect(url, NetworkConnection.POST, body);
                     if (resultString != null) {
                         result = new Result(resultString);
                     } else {
@@ -115,11 +116,19 @@ public class SignUpActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Result result) {
             if (result.mResultValue != null) {
-                Log.i("SignUpResult", result.mResultValue);
+                Log.i("SignUpResult", "Success: " +  result.mResultValue);
+                Intent intent = new Intent(SignUpActivity.this, InitialECActivity.class);
+                startActivity(intent);
             }
 
             if (result.mException != null) {
-                Log.i("SignUpResult", result.mException.getMessage());
+                Log.i("SignUpResult", "Error: " + result.mException.getMessage());
+                Log.e("SignUpResult", result.mException.toString(), result.mException);
+
+                Toast.makeText(
+                        getApplicationContext(),
+                        getString(R.string.general_error),
+                        Toast.LENGTH_SHORT).show();
             }
         }
 
