@@ -125,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (json.length() > 2) {
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 } else {
                     Toast.makeText(
