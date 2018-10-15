@@ -3,6 +3,7 @@ package gameofphones.gatech.stumble;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -11,12 +12,19 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class NetworkConnection {
 
+    public static final String GET = "GET";
+    public static final String POST = "POST";
+
+    public static final String CREATE_USER = "https://thawing-cove-12717.herokuapp.com/user/create";
+    public static final String FIND_USER =
+            "https://thawing-cove-12717.herokuapp.com/user/findbyemail";
+
     /**
      * Given a URL, sets up a connection and gets the HTTP response body from the server.
      * If the network request is successful, it returns the response body in String form. Otherwise,
      * it will throw an IOException.
      */
-    public static String connect(URL url) throws IOException {
+    public static String connect(URL url, String restVerb, String body) throws IOException {
         InputStream stream = null;
         HttpsURLConnection connection = null;
         String result = null;
@@ -27,10 +35,22 @@ public class NetworkConnection {
             // Timeout for connection.connect() arbitrarily set to 3000ms.
             connection.setConnectTimeout(3000);
             // For this use case, set HTTP method to GET.
-            connection.setRequestMethod("GET");
+            connection.setRequestMethod(restVerb);
             // Already true by default but setting just in case; needs to be true since this request
             // is carrying an input (response) body.
-            connection.setDoInput(true);
+
+            if (restVerb.equals(POST)) {
+                connection.setDoOutput(false);
+                connection.setRequestProperty("Content-Type","application/json");
+                OutputStream os = connection.getOutputStream();
+                os.write(body.getBytes("UTF-8"));
+                os.close();
+            }
+
+            if (restVerb.equals(GET)) {
+                connection.setDoInput(true);
+            }
+
             // Open communications link (network traffic occurs here).
             connection.connect();
 

@@ -7,14 +7,14 @@ import java.util.List;
 
 public class User {
 
-    @SerializedName("first_name")
+    @SerializedName("firstName")
     private String mFirstName;
 
-    @SerializedName("last_name")
+    @SerializedName("lastName")
     private String mLastName;
     @SerializedName("email")
     private String mEmail;
-    @SerializedName("emergency_contacts")
+    @SerializedName("emergencyContact")
     private List<EmergencyContact> mEmergencyContacts;
 
     public User(String firstName, String lastName, String email) {

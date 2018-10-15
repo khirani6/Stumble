@@ -6,5 +6,8 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="phone_num">Phone Number</string>
+    <string name="login_error">Invalid username or password</string>
+    <string name="general_error">Something went wrong, please try again.</string>
+    <string name="empty_fields_error">Please fill in all fields</string>
 
 </resources>
