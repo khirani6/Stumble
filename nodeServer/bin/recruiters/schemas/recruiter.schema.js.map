@@ -1,1 +1,0 @@
-{"version":3,"file":"recruiter.schema.js","sourceRoot":"","sources":["../../../src/recruiters/schemas/recruiter.schema.ts"],"names":[],"mappings":";;AAAA,qCAAqC;AAExB,QAAA,eAAe,GAAG,IAAI,QAAQ,CAAC,MAAM,CAAC;IACjD,SAAS,EAAE,MAAM;IACjB,QAAQ,EAAE,MAAM;IAChB,KAAK,EAAE,MAAM;IACb,GAAG,EAAE,MAAM;CACZ,CAAC,CAAC"}
