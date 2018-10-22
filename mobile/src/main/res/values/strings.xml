@@ -9,5 +9,6 @@
     <string name="login_error">Invalid username or password</string>
     <string name="general_error">Something went wrong, please try again.</string>
     <string name="empty_fields_error">Please fill in all fields</string>
+    <string name="fall_detected">Fall Detected!</string>
 
 </resources>

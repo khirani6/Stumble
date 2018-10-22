@@ -63,6 +63,8 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
+
     }
 
     private boolean isEmpty(EditText text) {
