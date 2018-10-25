@@ -9,7 +9,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <uses-feature android:name="android.hardware.sensor.accelerometer"
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
 
     <application
@@ -29,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/NoStatusBarTheme" />
@@ -40,7 +42,6 @@
             android:theme="@style/NoStatusBarTheme">
 
         </activity>
-
         <activity
             android:name=".ECActivity"
             android:label="Emergency Contacts" />
@@ -63,6 +64,11 @@
             android:label="Settings">
 
         </activity>
+
+        <service
+            android:name=".FallDetectionService"
+            android:exported="false"></service>
+
     </application>
 
 </manifest>
