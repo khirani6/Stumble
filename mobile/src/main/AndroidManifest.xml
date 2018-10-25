@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <uses-feature android:name="android.hardware.sensor.accelerometer"
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
 
     <application
@@ -18,9 +19,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/NoStatusBarTheme">
-
-        </activity>
+            android:theme="@style/NoStatusBarTheme"></activity>
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/NoStatusBarTheme" />
@@ -30,15 +29,12 @@
         <activity
             android:name=".HomeActivity"
             android:theme="@style/NoStatusBarTheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".ECActivity"
             android:label="Emergency Contacts" />
@@ -46,13 +42,19 @@
         <activity
             android:name=".AddECActivity"
             android:label="Add Emergency Contact" />
-        <activity android:name=".AlertActivity"
-            android:theme="@style/NoStatusBarTheme"/>
-        <activity android:name=".AlertWhoActivity"
-            android:label="Sent Alert To:"/>
+        <activity
+            android:name=".AlertActivity"
+            android:theme="@style/NoStatusBarTheme" />
+        <activity
+            android:name=".AlertWhoActivity"
+            android:label="Sent Alert To:" />
         <activity
             android:name=".AlertSentActivity"
             android:theme="@style/NoStatusBarTheme" />
+
+        <service
+            android:name=".FallDetectionService"
+            android:exported="false"></service>
     </application>
 
 </manifest>
