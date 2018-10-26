@@ -35,10 +35,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, AlertWhoActivity.class);
+                intent.putExtra("previous", "home");
                 startActivity(intent);
 
             }
 
+        });
+        mSettingsButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
         });
     }
 

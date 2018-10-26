@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="gameofphones.gatech.stumble">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +15,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="ExtraText">
         <activity
             android:name=".LoginActivity"
             android:theme="@style/NoStatusBarTheme">
@@ -30,7 +34,9 @@
             android:theme="@style/NoStatusBarTheme" />
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/NoStatusBarTheme" />
+            android:theme="@style/NoStatusBarTheme">
+
+        </activity>
         <activity
             android:name=".ECActivity"
             android:label="Emergency Contacts" />
@@ -38,13 +44,21 @@
         <activity
             android:name=".AddECActivity"
             android:label="Add Emergency Contact" />
-        <activity android:name=".AlertActivity"
-            android:theme="@style/NoStatusBarTheme"/>
-        <activity android:name=".AlertWhoActivity"
-            android:label="Sent Alert To:"/>
+        <activity
+            android:name=".AlertActivity"
+            android:theme="@style/NoStatusBarTheme">
+
+        </activity>
+        <activity
+            android:name=".AlertWhoActivity"
+            android:label="Sent Alert To:" />
         <activity
             android:name=".AlertSentActivity"
             android:theme="@style/NoStatusBarTheme" />
+        <activity android:name=".SettingsActivity"
+            android:label="Settings">
+
+        </activity>
     </application>
 
 </manifest>
