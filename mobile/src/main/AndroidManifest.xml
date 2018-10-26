@@ -19,9 +19,7 @@
         tools:ignore="ExtraText">
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/NoStatusBarTheme">
-
-        </activity>
+            android:theme="@style/NoStatusBarTheme"></activity>
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/NoStatusBarTheme" />
@@ -30,7 +28,9 @@
             android:theme="@style/NoStatusBarTheme" />
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/NoStatusBarTheme" />
+            android:theme="@style/NoStatusBarTheme">
+
+        </activity>
         <activity
             android:name=".ECActivity"
             android:label="Emergency Contacts" />
@@ -38,7 +38,8 @@
         <activity
             android:name=".AddECActivity"
             android:label="Add Emergency Contact" />
-        <activity android:name=".AlertActivity"
+        <activity
+            android:name=".AlertActivity"
             android:theme="@style/NoStatusBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,11 +47,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlertWhoActivity"
-            android:label="Sent Alert To:"/>
+        <activity
+            android:name=".AlertWhoActivity"
+            android:label="Sent Alert To:" />
         <activity
             android:name=".AlertSentActivity"
             android:theme="@style/NoStatusBarTheme" />
+        <activity android:name=".SettingsActivity"
+            android:label="Settings">
+
+        </activity>
     </application>
 
 </manifest>

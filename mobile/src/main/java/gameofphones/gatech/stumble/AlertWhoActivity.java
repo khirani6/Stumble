@@ -9,14 +9,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,13 +29,13 @@ public class AlertWhoActivity extends AppCompatActivity {
 
     final String alertString = "This is a test alert sent by User";
 
+    private boolean isTest = false;
+
     private BroadcastReceiver sentStatusReceiver, deliveredStatusReceiver;
 
-    private TelephonyManager mTelephonyManager;
     private String phoneNumber;
 
     private static final int REQUEST_SMS = 0;
-    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
 
 
     ListView listView;
@@ -51,25 +49,13 @@ public class AlertWhoActivity extends AppCompatActivity {
         listView = findViewById(R.id.alert_who_list);
         listView.setAdapter(alertWho);
 
-        //send a phone call (tutorial: https://google-developer-training.gitbooks.io/android-developer-phone-sms-course/content/Lesson%201/1_c_phone_calls.html)
-        mTelephonyManager = (TelephonyManager)
-                getSystemService(TELEPHONY_SERVICE);
+        Intent intent = getIntent();
+        String previous = intent.getStringExtra("previous");
 
-        phoneNumber = String.format("tel: %s",
-                "8322473858");
-
-        if (isTelephonyEnabled()) {
-            checkForPhonePermission();
-            // Log.d(TAG, getString(R.string.telephony_enabled));
-            // Todo: Register the PhoneStateListener.
-            // Todo: Check for permission here.
-        } else {
-            Toast.makeText(this,
-                    "Telephony not enabled",
-                    Toast.LENGTH_LONG).show();
-            //Log.d(TAG, getString(R.string.telephony_not_enabled));
-
+        if (previous == "home") {
+            isTest = true;
         }
+
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -99,15 +85,6 @@ public class AlertWhoActivity extends AppCompatActivity {
                     sendFall();
                 }
                 sendFall();
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                // Set the data for the intent as the phone number.
-                callIntent.setData(Uri.parse(phoneNumber));
-                // If package resolves to an app, send intent.
-                if (callIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(callIntent);
-                } else {
-                    //Log.e(TAG, "Can't resolve app for ACTION_CALL Intent.");
-                }
                 Intent intent = new Intent(AlertWhoActivity.this, AlertSentActivity.class);
                 String message = templateNamesArr[position];
                 intent.putExtra("name", message);
@@ -116,35 +93,14 @@ public class AlertWhoActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isTelephonyEnabled() {
-        if (mTelephonyManager != null) {
-            if (mTelephonyManager.getSimState() ==
-                    TelephonyManager.SIM_STATE_READY) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void checkForPhonePermission() {
-        if (ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.CALL_PHONE) !=
-                PackageManager.PERMISSION_GRANTED) {
-            // Permission not yet granted. Use requestPermissions().
-            //Log.d(TAG, getString(R.string.permission_not_granted));
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CALL_PHONE},
-                    MY_PERMISSIONS_REQUEST_CALL_PHONE);
-        } else {
-            // Permission already granted.
-        }
-    }
-
 
     public void sendFall() {
         //will allow text message to be sent to a contact
         //will all be replaced once backend is connected to frontend
         String alertMessage = " Name has fallen!";
+        if (isTest) {
+            alertMessage = alertString;
+        }
         Log.d("Alert Message", alertMessage);
         String contactNumber = "8322473858";
         //Remove whitespace and non-numeric characters
