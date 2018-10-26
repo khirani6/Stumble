@@ -19,7 +19,13 @@
         tools:ignore="ExtraText">
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/NoStatusBarTheme"></activity>
+            android:theme="@style/NoStatusBarTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/NoStatusBarTheme" />
@@ -41,11 +47,7 @@
         <activity
             android:name=".AlertActivity"
             android:theme="@style/NoStatusBarTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".AlertWhoActivity"
