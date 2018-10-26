@@ -15,7 +15,7 @@
         android:layout_marginTop="25dp"
         android:text="Phone Number:"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastNameID" />
@@ -27,11 +27,12 @@
         android:layout_marginStart="16dp"
         android:text="SMS Number:"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582" />
 
     <EditText
         android:id="@+id/firstNameID"
@@ -39,13 +40,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
+        android:inputType="none"
         android:text="First Name"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/white"
-        android:inputType="none"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,7 +61,7 @@
         android:inputType="none"
         android:text="Last Name"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstNameID" />
@@ -69,15 +70,12 @@
         android:id="@+id/smsNumText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="152dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:inputType="none"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smsNumID" />
 
@@ -85,14 +83,12 @@
         android:id="@+id/phoneNumText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="152dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:inputType="none"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumID" />
 
@@ -100,8 +96,8 @@
         android:id="@+id/editButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="31dp"
-        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="16dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
