@@ -1,12 +1,17 @@
 package gameofphones.gatech.stumble;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
 
@@ -23,6 +28,7 @@ public class FallDetectionService extends IntentService implements SensorEventLi
 
     private SensorManager mSensorManager;
     private Sensor mSensor;
+    private Context mContext;
 
     public FallDetectionService() {
         super("FallDetectionService");
@@ -33,6 +39,7 @@ public class FallDetectionService extends IntentService implements SensorEventLi
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+        mContext = getApplicationContext();
         Log.d("SensorNames", Integer.toString(deviceSensors.size()));
         for (Sensor s : deviceSensors) {
             Log.d("SensorNames", s.getName());
@@ -79,8 +86,45 @@ public class FallDetectionService extends IntentService implements SensorEventLi
         //Log.d("SensorValues", "Y Value: " + Float.toString(y));
         Log.d("SensorValues", "Z Value: " + Float.toString(z));
 
-        if (z < -1.0f) {
+        if (z < -1.0f && z > -7.4f) {
             Log.d("FallDetectionService", "Fall! Z = " + Float.toString(z));
+            Intent intent = new Intent(Intent.ACTION_MAIN, null);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setClass(mContext, HomeActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 1, intent, 0);
+
+            // Build the notification as an ongoing high priority item; this ensures it will show as
+            // a heads up notification which slides down over top of the current content.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel notificationChannel = new NotificationChannel(
+                        "gameofphones.gatech.stumble",
+                        "Stumble",
+                        NotificationManager.IMPORTANCE_HIGH);
+                NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(notificationChannel);
+                final Notification.Builder builder =
+                        new Notification.Builder(mContext, notificationChannel.getId());
+                builder.setOngoing(true);
+//                builder.setPriority(Notification.PRIORITY_HIGH); TODO: Might need this for older versions
+
+                // Set notification content intent to take user to fullscreen UI if user taps on the
+                // notification body.
+                builder.setContentIntent(pendingIntent);
+                // Set full screen intent to trigger display of the fullscreen UI when the notification
+                // manager deems it appropriate.
+                builder.setFullScreenIntent(pendingIntent, true);
+
+                // Setup notification content.
+                builder.setSmallIcon(R.drawable.ic_notification_stumble);
+                builder.setContentTitle(getString(R.string.fall_detected));
+                builder.setContentText(getString(R.string.is_user_okay));
+
+                // Use builder.addAction(..) to add buttons to answer or reject the call.
+                // TODO: Add buttons to trigger alert or dismiss timer
+
+                builder.setAutoCancel(true);
+                notificationManager.notify("FallDetectedTag", 4261, builder.build());
+            }
         }
     }
 
