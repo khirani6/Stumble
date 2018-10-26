@@ -23,9 +23,6 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton mERButton;
     private ImageButton mAlertButton;
     private ImageButton mSettingsButton;
-
-    private TextView mFallDetectedTextView;
-    private Button mResetButton;
     private Button mStartServiceButton;
 
     @Override
@@ -36,8 +33,6 @@ public class HomeActivity extends AppCompatActivity {
         mERButton = findViewById(R.id.er_button);
         mAlertButton = findViewById(R.id.alert_button);
         mSettingsButton = findViewById(R.id.settings_button);
-        mFallDetectedTextView = findViewById(R.id.fall_detected_textview);
-        mResetButton = findViewById(R.id.reset_button);
         mStartServiceButton = findViewById(R.id.start_service);
 
         mStartServiceButton.setOnClickListener(new View.OnClickListener() {
@@ -46,15 +41,6 @@ public class HomeActivity extends AppCompatActivity {
                 Intent serviceIntent = new Intent(HomeActivity.this,
                         FallDetectionService.class);
                 startService(serviceIntent);
-            }
-        });
-
-        mResetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mFallDetectedTextView != null) {
-                    mFallDetectedTextView.setVisibility(View.INVISIBLE);
-                }
             }
         });
 
@@ -83,10 +69,5 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        this.getWindow().addFlags(
-                WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-                        | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                        | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
     }
 }
