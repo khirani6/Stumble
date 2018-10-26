@@ -86,11 +86,11 @@ public class FallDetectionService extends IntentService implements SensorEventLi
         //Log.d("SensorValues", "Y Value: " + Float.toString(y));
         Log.d("SensorValues", "Z Value: " + Float.toString(z));
 
-        if (z < -1.0f && z > -7.4f) {
+        if (z < 0.0f && z > -7.4f) {
             Log.d("FallDetectionService", "Fall! Z = " + Float.toString(z));
             Intent intent = new Intent(Intent.ACTION_MAIN, null);
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION | Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.setClass(mContext, HomeActivity.class);
+            intent.setClass(mContext, AlertActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 1, intent, 0);
 
             // Build the notification as an ongoing high priority item; this ensures it will show as
