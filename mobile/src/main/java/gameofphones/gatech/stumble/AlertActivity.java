@@ -99,7 +99,9 @@ public class AlertActivity extends AppCompatActivity {
     }
 
     private void sendAlert() {
-        String alertMessage = "Name has fallen!";
+        User currentUser = UserTracker.getInstance().getCurrentUser();
+        String alertMessage = String.format(
+                getString(R.string.alert_text), currentUser.getFirstName());
         Log.d("Alert Message", alertMessage);
         //contact would change of course
         String contactNumber = "8322473858";

@@ -61,7 +61,9 @@ public class AlertWhoActivity extends AppCompatActivity {
     public void sendFall() {
         //will allow text message to be sent to a contact
         //will all be replaced once backend is connected to frontend
-        String alertMessage = " Name has fallen!";
+        User currentUser = UserTracker.getInstance().getCurrentUser();
+        String alertMessage = String.format(
+                getString(R.string.alert_text), currentUser.getFirstName());
         if (isTest) {
             alertMessage = alertString;
         }

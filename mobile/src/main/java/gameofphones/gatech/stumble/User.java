@@ -14,7 +14,7 @@ public class User {
     private String mLastName;
     @SerializedName("email")
     private String mEmail;
-    @SerializedName("emergencyContact")
+    @SerializedName("emergencyContacts")
     private List<EmergencyContact> mEmergencyContacts;
 
     public User(String firstName, String lastName, String email) {
