@@ -17,11 +17,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.concurrent.TimeUnit;
 
 
 public class AlertActivity extends AppCompatActivity {
@@ -70,7 +67,7 @@ public class AlertActivity extends AppCompatActivity {
         //will have to be changed once we get user's preferred duration set up
         int minuti = SettingsActivity.duration;
         if (minuti == 0) {
-            minuti = 60;
+            minuti = 10;
         }
         startTimer(minuti);
     }
@@ -103,7 +100,7 @@ public class AlertActivity extends AppCompatActivity {
 
                 }
                 else{
-                    textTimer.setText("1:00");
+                    textTimer.setText("0:10");
                 }
             }
         }.start();
@@ -112,7 +109,7 @@ public class AlertActivity extends AppCompatActivity {
     }
 
     private void sendAlert() {
-        String alertMessage = " Name has fallen!";
+        String alertMessage = "Name has fallen!";
         Log.d("Alert Message", alertMessage);
         //contact would change of course
         String contactNumber = "8322473858";
