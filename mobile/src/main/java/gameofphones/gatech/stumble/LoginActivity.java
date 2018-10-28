@@ -12,10 +12,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -126,6 +130,11 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i("LoginResult", Integer.toString(json.length()));
 
                 if (json.length() > 2) {
+                    Type collectionType = new TypeToken<Collection<User>>(){}.getType();
+                    List<User> users = new Gson().fromJson(json, collectionType);
+                    User currentUser = users.get(0);
+                    UserTracker userTracker = UserTracker.getInstance();
+                    userTracker.setCurrentUser(currentUser);
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
