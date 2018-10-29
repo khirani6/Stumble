@@ -12,34 +12,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:text="Phone Number:"
+        android:layout_marginTop="32dp"
+        android:text="@string/phone_num"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastNameID" />
 
-    <TextView
-        android:id="@+id/smsNumID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="SMS Number:"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
-
     <EditText
         android:id="@+id/firstNameID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:inputType="none"
@@ -54,8 +40,8 @@
         android:id="@+id/lastNameID"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:inputType="none"
@@ -67,23 +53,11 @@
         app:layout_constraintTop_toBottomOf="@+id/firstNameID" />
 
     <EditText
-        android:id="@+id/smsNumText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:inputType="none"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/smsNumID" />
-
-    <EditText
         android:id="@+id/phoneNumText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:inputType="none"

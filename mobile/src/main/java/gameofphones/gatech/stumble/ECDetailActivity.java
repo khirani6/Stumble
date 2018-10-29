@@ -14,7 +14,6 @@ public class ECDetailActivity extends AppCompatActivity {
     private EditText firstNameText;
     private EditText lastNameText;
     private EditText phoneNumText;
-    private EditText smsNumText;
     private ImageButton editButton;
     boolean editing = false;
 
@@ -31,7 +30,6 @@ public class ECDetailActivity extends AppCompatActivity {
         firstNameText = (EditText) findViewById(R.id.firstNameID);
         lastNameText = findViewById(R.id.lastNameID);
         phoneNumText = findViewById(R.id.phoneNumText);
-        smsNumText = findViewById(R.id.smsNumText);
 
 
         Intent intent = getIntent();
@@ -44,7 +42,6 @@ public class ECDetailActivity extends AppCompatActivity {
         firstNameText.setEnabled(false);
         lastNameText.setEnabled(false);
         phoneNumText.setEnabled(false);
-        smsNumText.setEnabled(false);
 
 
 
@@ -56,14 +53,12 @@ public class ECDetailActivity extends AppCompatActivity {
                     firstNameText.setEnabled(true);
                     lastNameText.setEnabled(true);
                     phoneNumText.setEnabled(true);
-                    smsNumText.setEnabled(true);
 
                 } else {
                     editButton.setImageResource(R.drawable.edit_button);
                     firstNameText.setEnabled(false);
                     lastNameText.setEnabled(false);
                     phoneNumText.setEnabled(false);
-                    smsNumText.setEnabled(false);
                     //save new changes
                 }
                 editing = !editing;
