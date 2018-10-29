@@ -12,5 +12,6 @@
     <string name="fall_detected">Fall Detected!</string>
     <string name="is_user_okay">Are you okay?</string>
     <string name="alert_text">%s has fallen!</string>
+    <string name="welcome_text">Welcome %s!</string>
 
 </resources>
