@@ -11,8 +11,8 @@
         android:id="@+id/edit_ec_button"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="88dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:contentDescription="edit_emergency_contacts"
@@ -21,23 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/edit_emergency_contacts" />
-
-    <ImageButton
-        android:id="@+id/er_button"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/er_selector"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/edit_ec_button"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/er_button" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -53,7 +36,7 @@
         android:id="@+id/alert_button"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="72dp"
         android:layout_marginStart="16dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
@@ -67,7 +50,7 @@
         android:id="@+id/settings_button"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="72dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="24dp"
         android:adjustViewBounds="true"

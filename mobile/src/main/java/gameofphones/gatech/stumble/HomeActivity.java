@@ -19,7 +19,6 @@ public class HomeActivity extends AppCompatActivity {
     private static final int REQUEST_SMS = 0;
 
     private ImageButton mECButton;
-    private ImageButton mERButton;
     private ImageButton mAlertButton;
     private ImageButton mSettingsButton;
     private Button mStartServiceButton;
@@ -29,7 +28,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mECButton = findViewById(R.id.edit_ec_button);
-        mERButton = findViewById(R.id.er_button);
         mAlertButton = findViewById(R.id.alert_button);
         mSettingsButton = findViewById(R.id.settings_button);
         mStartServiceButton = findViewById(R.id.start_service);
