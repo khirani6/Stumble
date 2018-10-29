@@ -14,8 +14,6 @@ public class InitialECActivity extends AppCompatActivity {
     private EditText firstNameField;
     private EditText lastNameField;
     private EditText phoneNumField;
-    private EditText smsNumField;
-
 
     private Button mEnterButton;
     @Override
@@ -26,13 +24,12 @@ public class InitialECActivity extends AppCompatActivity {
         firstNameField = findViewById(R.id.first_name_field);
         lastNameField = findViewById(R.id.last_name_field);
         phoneNumField = findViewById(R.id.callPhoneNumber);
-        smsNumField = findViewById(R.id.smsPhoneNumber);
 
         mEnterButton = findViewById(R.id.enter_button);
         mEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isEmpty(firstNameField) || isEmpty(lastNameField) || isEmpty(phoneNumField) || isEmpty(smsNumField)) {
+                if (isEmpty(firstNameField) || isEmpty(lastNameField) || isEmpty(phoneNumField)) {
                     Context context = getApplicationContext();
                     CharSequence text = "Please fill in all fields";
                     int duration = Toast.LENGTH_SHORT;
