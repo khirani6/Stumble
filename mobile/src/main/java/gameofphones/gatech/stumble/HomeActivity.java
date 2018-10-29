@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import static android.Manifest.permission.SEND_SMS;
@@ -22,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton mAlertButton;
     private ImageButton mSettingsButton;
     private Button mStartServiceButton;
+    private TextView welcomeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,10 @@ public class HomeActivity extends AppCompatActivity {
         mAlertButton = findViewById(R.id.alert_button);
         mSettingsButton = findViewById(R.id.settings_button);
         mStartServiceButton = findViewById(R.id.start_service);
+        welcomeText = findViewById(R.id.welcome_text);
+        User currentUser = UserTracker.getInstance().getCurrentUser();
+        welcomeText.setText(String.format(
+                getString(R.string.welcome_text), currentUser.getFirstName()));
 
         mStartServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
