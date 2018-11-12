@@ -14,6 +14,8 @@ public class User {
     private String mLastName;
     @SerializedName("email")
     private String mEmail;
+    @SerializedName("timer")
+    private int timer = 10;
     @SerializedName("emergencyContacts")
     private List<EmergencyContact> mEmergencyContacts;
 
