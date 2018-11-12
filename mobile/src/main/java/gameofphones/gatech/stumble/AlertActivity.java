@@ -31,6 +31,7 @@ public class AlertActivity extends AppCompatActivity {
     private long timeCountInMilliSeconds = 1 * 1000;
 
     private BroadcastReceiver sentStatusReceiver, deliveredStatusReceiver;
+    private Ringtone mRingtone;
 
     private static final int REQUEST_SMS = 0;
 
@@ -44,6 +45,13 @@ public class AlertActivity extends AppCompatActivity {
                         | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                         | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
+        try {
+            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+            mRingtone = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         textTimer = findViewById(R.id.timerText);
         mOKButton = findViewById(R.id.okButton);
         mNotOKButton = findViewById(R.id.notOKButton);
@@ -51,7 +59,11 @@ public class AlertActivity extends AppCompatActivity {
         mOKButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mRingtone != null) {
+                    mRingtone.stop();
+                }
                 Intent intent = new Intent(AlertActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -59,6 +71,9 @@ public class AlertActivity extends AppCompatActivity {
         mNotOKButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mRingtone != null) {
+                    mRingtone.stop();
+                }
                 Intent intent = new Intent(AlertActivity.this, AlertWhoActivity.class);
                 intent.putExtra("previous", "alert");
                 startActivity(intent);
@@ -73,13 +88,7 @@ public class AlertActivity extends AppCompatActivity {
     }
 
     private void startTimer(final int minuti) {
-        try {
-            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-            r.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        mRingtone.play();
         countDownTimer = new CountDownTimer(timeCountInMilliSeconds*minuti, 1000) {
             // 500 means, onTick function will be called at every 500 milliseconds
 
@@ -97,6 +106,7 @@ public class AlertActivity extends AppCompatActivity {
                 if(textTimer.getText().equals("00:00")){
                     sendAlert();
                     textTimer.setText("0:00");
+                    mRingtone.stop();
 
                 }
                 else{
