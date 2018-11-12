@@ -6,40 +6,33 @@ import com.google.gson.annotations.SerializedName;
 
 public class EmergencyContact {
 
-    @SerializedName("first_name")
+    @SerializedName("firstName")
     private String mFirstName;
 
-    @SerializedName("last_name")
+    @SerializedName("lastName")
     private String mLastName;
 
-    @SerializedName("voice_phone_number")
-    @Nullable private String mVoicePhoneNumber;
-
-    @SerializedName("sms_phone_number")
-    @Nullable private String mSMSPhoneNumber;
+    @SerializedName("phoneNumber")
+    @Nullable private String mPhoneNumber;
 
     /**
      * The phone numbers are nullable because this gives the user the most flexibility. They can
      * indicate a voice phone number and leave the sms phone number blank to say "only call this
      * number and don't text it" and vice versa.
      */
-    public EmergencyContact(String firstName, String lastName, @Nullable String voicePhoneNumber,
-                            @Nullable String smsPhoneNumber) {
+    public EmergencyContact(String firstName, String lastName, @Nullable String PhoneNumber) {
         mFirstName = firstName;
         mLastName = lastName;
-        mVoicePhoneNumber = voicePhoneNumber;
-        mSMSPhoneNumber = smsPhoneNumber;
+        mPhoneNumber = PhoneNumber;
     }
 
     /**
      * This constructor could be helpful in the case that last names aren't applicable.
      * For example, if the emergency contact is an organization or hospital.
      */
-    public EmergencyContact(String firstName, @Nullable String voicePhoneNumber,
-                            @Nullable String SMSPhoneNumber) {
+    public EmergencyContact(String firstName, @Nullable String PhoneNumber) {
         mFirstName = firstName;
-        mVoicePhoneNumber = voicePhoneNumber;
-        mSMSPhoneNumber = SMSPhoneNumber;
+        mPhoneNumber = PhoneNumber;
     }
 
     public String getFirstName() {
@@ -59,20 +52,11 @@ public class EmergencyContact {
     }
 
     @Nullable
-    public String getVoicePhoneNumber() {
-        return mVoicePhoneNumber;
+    public String getPhoneNumber() {
+        return mPhoneNumber;
     }
 
-    public void setVoicePhoneNumber(@Nullable String voicePhoneNumber) {
-        mVoicePhoneNumber = voicePhoneNumber;
-    }
-
-    @Nullable
-    public String getSMSPhoneNumber() {
-        return mSMSPhoneNumber;
-    }
-
-    public void setSMSPhoneNumber(@Nullable String SMSPhoneNumber) {
-        mSMSPhoneNumber = SMSPhoneNumber;
+    public void setPhoneNumber(@Nullable String PhoneNumber) {
+        mPhoneNumber = PhoneNumber;
     }
 }
