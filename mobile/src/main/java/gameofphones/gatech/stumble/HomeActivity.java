@@ -1,6 +1,7 @@
 package gameofphones.gatech.stumble;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,6 +14,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Iterator;
+import java.util.List;
+
 import static android.Manifest.permission.SEND_SMS;
 
 public class HomeActivity extends AppCompatActivity {
@@ -23,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton mAlertButton;
     private ImageButton mSettingsButton;
     private Button mStartServiceButton;
+    private Button mStopServiceButton;
     private TextView welcomeText;
 
     @Override
@@ -33,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         mAlertButton = findViewById(R.id.alert_button);
         mSettingsButton = findViewById(R.id.settings_button);
         mStartServiceButton = findViewById(R.id.start_service);
+        mStopServiceButton = findViewById(R.id.stop_service);
         welcomeText = findViewById(R.id.welcome_text);
         User currentUser = UserTracker.getInstance().getCurrentUser();
         welcomeText.setText(String.format(
@@ -44,6 +50,27 @@ public class HomeActivity extends AppCompatActivity {
                 Intent serviceIntent = new Intent(HomeActivity.this,
                         FallDetectionService.class);
                 startService(serviceIntent);
+            }
+        });
+
+        mStopServiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+                List<ActivityManager.RunningAppProcessInfo> runningAppProcesses = am.getRunningAppProcesses();
+
+                Iterator<ActivityManager.RunningAppProcessInfo> iter = runningAppProcesses.iterator();
+
+                while(iter.hasNext()){
+                    ActivityManager.RunningAppProcessInfo next = iter.next();
+
+                    String processName = getPackageName() + ":service";
+
+                    if(next.processName.equals(processName)){
+                        android.os.Process.killProcess(next.pid);
+                        break;
+                    }
+                }
             }
         });
 

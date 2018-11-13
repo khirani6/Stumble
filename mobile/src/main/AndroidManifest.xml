@@ -70,6 +70,7 @@
 
         <service
             android:name=".FallDetectionService"
+            android:process=":service"
             android:exported="false"></service>
 
     </application>

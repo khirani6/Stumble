@@ -136,7 +136,7 @@ public class FallDetectionService extends IntentService implements SensorEventLi
 
         // TODO: Does START_STICKY drain the battery?
         mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_UI);
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @Override
