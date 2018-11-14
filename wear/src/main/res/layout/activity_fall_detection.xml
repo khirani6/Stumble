@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     android:background="@color/dark_grey"
     android:padding="@dimen/box_inset_layout_padding"
-    tools:context=".MainActivity"
+    tools:context=".FallDetectionActivity"
     tools:deviceIds="wear">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/inner_frame_layout_padding"
-        app:boxedEdges="all">
+        android:orientation="vertical"
+        app:boxedEdges="all"> <!--Need this boxedEdge setting to keep the text on the screen -->
 
         <TextView
             android:id="@+id/text"
@@ -21,5 +22,11 @@
             android:layout_height="wrap_content"
             android:text="@string/hello_world" />
 
-    </FrameLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start"
+            android:id="@+id/start_detection"/>
+
+    </LinearLayout>
 </android.support.wear.widget.BoxInsetLayout>
