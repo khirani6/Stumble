@@ -5,6 +5,9 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.NotificationCompat.WearableExtender;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -88,6 +91,30 @@ public class FallDetectionService extends IntentService implements SensorEventLi
         if (z < 0.0f && z > -7.4f) {
             Log.d("FallDetectionService", "Fall! Z = " + Float.toString(z));
 
+            int notificationId = 001;
+            // The channel ID of the notification.
+            String id = "my_channel_01";
+            // Build intent for notification content
+            Intent viewIntent = new Intent(this, NotificationActivity.class);
+            /*viewIntent.putExtra(EXTRA_EVENT_ID, eventId); */
+            PendingIntent viewPendingIntent =
+                    PendingIntent.getActivity(this, 0, viewIntent, 0);
+
+            // Notification channel ID is ignored for Android 7.1.1
+            // (API level 25) and lower.
+            NotificationCompat.Builder notificationBuilder =
+                    new NotificationCompat.Builder(this, id)
+                            .setSmallIcon(R.drawable.stumble_logo_mobile)
+                            .setContentTitle(getString(R.string.fall_detected))
+                            .setContentText(getString(R.string.is_user_okay))
+                            .setContentIntent(viewPendingIntent);
+
+            // Get an instance of the NotificationManager service
+            NotificationManagerCompat notificationManager =
+                    NotificationManagerCompat.from(this);
+
+            // Issue the notification with notification manager.
+            notificationManager.notify(notificationId, notificationBuilder.build());
         }
     }
 
