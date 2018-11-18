@@ -38,7 +38,11 @@
 
         <service
             android:name=".FallDetectionService"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <activity
+            android:name=".NotificationActivity"
+            android:label="@string/title_activity_notification"></activity>
     </application>
 
 </manifest>
