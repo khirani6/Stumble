@@ -93,12 +93,12 @@ public class FallDetectionService extends IntentService implements SensorEventLi
 
             int notificationId = 001;
             // The channel ID of the notification.
-            String id = "my_channel_01";
+            String id = "gameofphones.gatech.stumble";
             // Build intent for notification content
             Intent viewIntent = new Intent(this, NotificationActivity.class);
             /*viewIntent.putExtra(EXTRA_EVENT_ID, eventId); */
             PendingIntent viewPendingIntent =
-                    PendingIntent.getActivity(this, 0, viewIntent, 0);
+                    PendingIntent.getActivity(getApplicationContext(), 0, viewIntent, 0);
 
             // Notification channel ID is ignored for Android 7.1.1
             // (API level 25) and lower.
