@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ECListAdapter extends ArrayAdapter {
 
 
@@ -18,9 +20,9 @@ public class ECListAdapter extends ArrayAdapter {
     private final Activity context;
 
     //to store the list of EC's
-    private final String[] nameArray;
+    private final ArrayList<EmergencyContact> nameArray;
 
-    public ECListAdapter(Activity context, String[] nameArrayParam){
+    public ECListAdapter(Activity context, ArrayList<EmergencyContact> nameArrayParam){
 
         super(context,R.layout.ec_list_row , nameArrayParam);
         this.context=context;
@@ -34,7 +36,7 @@ public class ECListAdapter extends ArrayAdapter {
 
 
         TextView nameTextField = (TextView) rowView.findViewById(R.id.nameTextView);
-        nameTextField.setText(nameArray[position]);
+        for(EmergencyContact i : nameArray) nameTextField.setText(i.toString());
         return rowView;
 
     }
