@@ -31,9 +31,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/NoStatusBarTheme" />
@@ -42,9 +40,7 @@
             android:theme="@style/NoStatusBarTheme" />
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/NoStatusBarTheme">
-
-        </activity>
+            android:theme="@style/NoStatusBarTheme"></activity>
         <activity
             android:name=".ECActivity"
             android:label="Emergency Contacts" />
@@ -54,24 +50,20 @@
             android:label="Add Emergency Contact" />
         <activity
             android:name=".AlertActivity"
-            android:theme="@style/NoStatusBarTheme">
-
-        </activity>
+            android:theme="@style/NoStatusBarTheme"></activity>
         <activity
             android:name=".AlertWhoActivity"
             android:label="Sent Alert To:" />
         <activity
             android:name=".AlertSentActivity"
             android:theme="@style/NoStatusBarTheme" />
-        <activity android:name=".SettingsActivity"
-            android:label="Settings">
-
-        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings"></activity>
 
         <service
             android:name=".FallDetectionService"
-            android:exported="false"></service>
-
+            android:exported="false" />
     </application>
 
 </manifest>

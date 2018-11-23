@@ -38,7 +38,17 @@
 
         <service
             android:name=".FallDetectionService"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
