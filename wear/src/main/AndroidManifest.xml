@@ -50,26 +50,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FallDetectedAlertActivity"
-            android:label="@string/title_activity_fall_detected_alert">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".AlertSentActivity"
             android:label="@string/title_activity_alert_sent">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".AlertWhoActivity"
-            android:label="@string/title_activity_alert_who">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
