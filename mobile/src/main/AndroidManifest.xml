@@ -40,7 +40,7 @@
             android:theme="@style/NoStatusBarTheme" />
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/NoStatusBarTheme"></activity>
+            android:theme="@style/NoStatusBarTheme" />
         <activity
             android:name=".ECActivity"
             android:label="Emergency Contacts" />
@@ -50,7 +50,7 @@
             android:label="Add Emergency Contact" />
         <activity
             android:name=".AlertActivity"
-            android:theme="@style/NoStatusBarTheme"></activity>
+            android:theme="@style/NoStatusBarTheme" />
         <activity
             android:name=".AlertWhoActivity"
             android:label="Sent Alert To:" />
@@ -59,7 +59,7 @@
             android:theme="@style/NoStatusBarTheme" />
         <activity
             android:name=".SettingsActivity"
-            android:label="Settings"></activity>
+            android:label="Settings" />
 
         <service
             android:name=".FallDetectionService"
