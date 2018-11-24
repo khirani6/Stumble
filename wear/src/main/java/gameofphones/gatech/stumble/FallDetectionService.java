@@ -1,20 +1,16 @@
 package gameofphones.gatech.stumble;
 
 import android.app.IntentService;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.app.NotificationCompat.WearableExtender;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Build;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 import java.util.List;
@@ -31,6 +27,8 @@ public class FallDetectionService extends IntentService implements SensorEventLi
     private SensorManager mSensorManager;
     private Sensor mSensor;
     private Context mContext;
+    private NotificationCompat.Builder mNotificationBuilder;
+    private static int NOTIFICATION_ID = 001;
 
     public FallDetectionService() {
         super("FallDetectionService");
@@ -46,6 +44,32 @@ public class FallDetectionService extends IntentService implements SensorEventLi
         for (Sensor s : deviceSensors) {
             Log.d("SensorNames", s.getName());
         }
+
+        // The channel ID of the notification.
+        String id = "gameofphones.gatech.stumble";
+//         Build intent for notification content
+        Intent viewIntent = new Intent(Intent.ACTION_MAIN, null);
+        viewIntent.setFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION | Intent.FLAG_ACTIVITY_NEW_TASK);
+        viewIntent.setClass(getApplicationContext(), NotificationActivity.class);
+
+        PendingIntent viewPendingIntent =
+                PendingIntent.getActivity(getApplicationContext(), 1, viewIntent, 0);
+
+
+        // Notification channel ID is ignored for Android 7.1.1
+        // (API level 25) and lower.
+        mNotificationBuilder =
+                new NotificationCompat.Builder(getApplicationContext(), id)
+                        .setOngoing(true)
+                        .setContentIntent(viewPendingIntent)
+                        .setFullScreenIntent(viewPendingIntent, true)
+                        .setSmallIcon(R.drawable.stumble_logo_mobile)
+                        .setContentTitle(getString(R.string.fall_detected))
+                        .setContentText(getString(R.string.is_user_okay))
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setDefaults(NotificationCompat.DEFAULT_ALL)
+                        .setAutoCancel(true);
+
     }
 
     @Override
@@ -91,30 +115,14 @@ public class FallDetectionService extends IntentService implements SensorEventLi
         if (z < 0.0f && z > -7.4f) {
             Log.d("FallDetectionService", "Fall! Z = " + Float.toString(z));
 
-            int notificationId = 001;
-            // The channel ID of the notification.
-            String id = "gameofphones.gatech.stumble";
-            // Build intent for notification content
-            Intent viewIntent = new Intent(this, NotificationActivity.class);
-            /*viewIntent.putExtra(EXTRA_EVENT_ID, eventId); */
-            PendingIntent viewPendingIntent =
-                    PendingIntent.getActivity(getApplicationContext(), 0, viewIntent, 0);
-
-            // Notification channel ID is ignored for Android 7.1.1
-            // (API level 25) and lower.
-            NotificationCompat.Builder notificationBuilder =
-                    new NotificationCompat.Builder(this, id)
-                            .setSmallIcon(R.drawable.stumble_logo_mobile)
-                            .setContentTitle(getString(R.string.fall_detected))
-                            .setContentText(getString(R.string.is_user_okay))
-                            .setContentIntent(viewPendingIntent);
-
             // Get an instance of the NotificationManager service
             NotificationManagerCompat notificationManager =
                     NotificationManagerCompat.from(this);
 
             // Issue the notification with notification manager.
-            notificationManager.notify(notificationId, notificationBuilder.build());
+            notificationManager.notify(NOTIFICATION_ID, mNotificationBuilder.build());
+            Intent fallIntent = new Intent("gameofphones.stumble.action.FALL_DETECTED");
+            sendBroadcast(fallIntent);
         }
     }
 
@@ -126,6 +134,8 @@ public class FallDetectionService extends IntentService implements SensorEventLi
 
         // TODO: Does START_STICKY drain the battery?
         mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_UI);
+        registerReceiver(new FallDetectedReceiver(),
+                new IntentFilter("gameofphones.stumble.action.FALL_DETECTED"));
         return START_NOT_STICKY;
     }
 

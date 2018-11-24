@@ -26,6 +26,9 @@
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
+        <meta-data
+            android:name="com.google.android.wearable.notificationBridgeMode"
+            android:value="NO_BRIDGING" />
 
         <activity
             android:name=".FallDetectionActivity"
@@ -39,11 +42,16 @@
 
         <service
             android:name=".FallDetectionService"
-            android:exported="false" />
+            android:exported="true" />
 
         <activity
             android:name=".NotificationActivity"
-            android:label="@string/title_activity_notification"></activity>
+            android:label="@string/title_activity_notification" />
+
+        <receiver
+            android:name=".FallDetectedReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
