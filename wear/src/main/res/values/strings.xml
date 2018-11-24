@@ -7,6 +7,6 @@
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_fall_detected_alert">FallDetectedAlertActivity</string>
-    <string name="title_activity_alert_who">activity_alert_who</string>
+    <string name="title_activity_alert_who">AlertWhoActivity</string>
     <string name="title_activity_alert_sent">AlertSentActivity</string>
 </resources>
