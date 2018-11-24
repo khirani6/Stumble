@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/stumbleBackground"
     android:padding="@dimen/box_inset_layout_padding"
-    tools:context=".HomeWearActivity"
+    tools:context=".AlertSentActivity"
     tools:deviceIds="wear">
 
     <FrameLayout
@@ -20,16 +20,22 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:src="@drawable/stumble_logo_mobile"
-                android:contentDescription="@string/stumble"/>
+                android:id="@+id/imageView2"
+                android:layout_width="92dp"
+                android:layout_height="68dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="14dp"
+                android:src="@drawable/checkmark" />
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/alertText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert_sent"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
     </FrameLayout>
 </android.support.wear.widget.BoxInsetLayout>
