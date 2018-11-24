@@ -9,6 +9,8 @@
     <string name="timer_text">00:00</string>
     <string name="ok_text">I\'m Okay</string>
     <string name="not_ok_text">Not Okay</string>
+    <string name="alert_sent_text">Alerts Sent to your Emergency Contacts</string>
+    <string name="checkmark">Checkmark</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_alert_sent">AlertSentActivity</string>
 </resources>
