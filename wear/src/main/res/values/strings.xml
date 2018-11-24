@@ -8,6 +8,7 @@
     <string name="are_ok">Are you ok?</string>
     <string name="stumble">Stumble Logo</string>
     <string name="alert_sent">Alerts Sent to Emergency Contacts</string>
+    <string name="timer_text">00:00</string>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="title_activity_home_wear">HomeWearActivity</string>
     <string name="title_activity_alert_sent">AlertSentActivity</string>

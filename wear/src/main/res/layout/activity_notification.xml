@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_grey"
+    android:background="@color/stumbleBackground"
     android:padding="@dimen/box_inset_layout_padding"
     tools:context=".NotificationActivity"
     tools:deviceIds="wear">
@@ -15,11 +15,30 @@
         android:padding="@dimen/inner_frame_layout_padding"
         app:boxedEdges="all">
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Handling Notification!" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="21dp"
+                android:text="@string/are_ok"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/alert_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="29dp"
+                android:text="@string/timer_text"
+                android:textSize="40sp" />
+        </RelativeLayout>
 
     </FrameLayout>
 </android.support.wear.widget.BoxInsetLayout>
