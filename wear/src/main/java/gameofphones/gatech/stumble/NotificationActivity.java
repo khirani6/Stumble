@@ -3,12 +3,16 @@ package gameofphones.gatech.stumble;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.wearable.activity.WearableActivity;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class NotificationActivity extends WearableActivity  {
 
     private TextView textTimer;
+    private Button mOKButton;
+    private Button mNotOKButton;
     private CountDownTimer countDownTimer;
     private long timeCountInMilliSeconds = 1 * 1000;
 
@@ -22,6 +26,22 @@ public class NotificationActivity extends WearableActivity  {
                         | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
         textTimer = findViewById(R.id.timer_textview);
+
+        mOKButton = findViewById(R.id.wear_ok_button);
+        mOKButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        mNotOKButton = findViewById(R.id.wear_not_ok_button);
+        mNotOKButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         // Enables Always-on
         setAmbientEnabled();
