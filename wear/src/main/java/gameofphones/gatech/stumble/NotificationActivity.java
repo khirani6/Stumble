@@ -21,7 +21,7 @@ public class NotificationActivity extends WearableActivity  {
                         | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                         | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
-        textTimer = findViewById(R.id.alert_text);
+        textTimer = findViewById(R.id.timer_textview);
 
         // Enables Always-on
         setAmbientEnabled();

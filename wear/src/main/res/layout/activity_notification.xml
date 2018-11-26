@@ -26,12 +26,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="47dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/are_ok"
                 android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/alert_text"
+                android:id="@+id/timer_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
