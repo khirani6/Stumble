@@ -5,5 +5,13 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
+    <string name="are_ok">Are you ok?</string>
+    <string name="stumble">Stumble Logo</string>
+    <string name="alert_sent">Alerts Sent to Emergency Contacts</string>
+    <string name="timer_text">00:00</string>
+    <string name="im_ok_text">I\'m okay</string>
+    <string name="not_ok_text">I\'m not okay</string>
     <string name="title_activity_notification">NotificationActivity</string>
+    <string name="title_activity_home_wear">HomeWearActivity</string>
+    <string name="title_activity_alert_sent">AlertSentActivity</string>
 </resources>

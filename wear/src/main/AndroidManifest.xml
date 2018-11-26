@@ -33,11 +33,7 @@
         <activity
             android:name=".FallDetectionActivity"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service
@@ -46,12 +42,30 @@
 
         <activity
             android:name=".NotificationActivity"
-            android:label="@string/title_activity_notification" />
+            android:label="@string/title_activity_notification" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <receiver
             android:name=".FallDetectedReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
+
+        <activity
+            android:name=".HomeWearActivity"
+            android:label="@string/title_activity_home_wear">
+        </activity>
+        <activity
+            android:name=".AlertSentActivity"
+            android:label="@string/title_activity_alert_sent">
+
+        </activity>
     </application>
 
 </manifest>
