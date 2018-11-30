@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.wearable.MessageEvent;
+
 
 public class AlertActivity extends AppCompatActivity {
 
@@ -114,8 +116,6 @@ public class AlertActivity extends AppCompatActivity {
                 }
             }
         }.start();
-        countDownTimer.start();
-
     }
 
     private void sendAlert() {
