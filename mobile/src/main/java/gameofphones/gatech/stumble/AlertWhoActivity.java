@@ -68,7 +68,7 @@ public class AlertWhoActivity extends AppCompatActivity {
             alertMessage = alertString;
         }
         Log.d("Alert Message", alertMessage);
-        String contactNumber = "8322473858";
+        String contactNumber = getString(R.string.demo_phone_number);
         //Remove whitespace and non-numeric characters
         contactNumber = contactNumber.trim();
         contactNumber = contactNumber.replaceAll("\\W", "");

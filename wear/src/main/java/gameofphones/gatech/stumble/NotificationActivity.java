@@ -51,6 +51,9 @@ public class NotificationActivity extends WearableActivity  {
             @Override
             public void onClick(View v) {
                 countDownTimer.cancel();
+                Intent intent = new Intent( NotificationActivity.this, HomeWearActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
 

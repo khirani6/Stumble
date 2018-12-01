@@ -36,7 +36,7 @@ public class DataLayerListenerService extends WearableListenerService {
                 getString(R.string.alert_text), currentUser.getFirstName());
         Log.d("Alert Message", alertMessage);
         //contact would change of course
-        String contactNumber = "7707330336";
+        String contactNumber = getString(R.string.demo_phone_number);
         //Remove whitespace and non-numeric characters
         contactNumber = contactNumber.trim();
         contactNumber = contactNumber.replaceAll("\\W", "");
