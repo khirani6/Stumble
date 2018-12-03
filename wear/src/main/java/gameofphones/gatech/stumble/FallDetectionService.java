@@ -27,8 +27,6 @@ public class FallDetectionService extends IntentService implements SensorEventLi
     private SensorManager mSensorManager;
     private Sensor mSensor;
     private Context mContext;
-    private NotificationCompat.Builder mNotificationBuilder;
-    private static int NOTIFICATION_ID = 001;
 
     public FallDetectionService() {
         super("FallDetectionService");
@@ -44,31 +42,6 @@ public class FallDetectionService extends IntentService implements SensorEventLi
         for (Sensor s : deviceSensors) {
             Log.d("SensorNames", s.getName());
         }
-
-        // The channel ID of the notification.
-        String id = "gameofphones.gatech.stumble";
-//         Build intent for notification content
-        Intent viewIntent = new Intent(Intent.ACTION_MAIN, null);
-        viewIntent.setFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION | Intent.FLAG_ACTIVITY_NEW_TASK);
-        viewIntent.setClass(getApplicationContext(), NotificationActivity.class);
-
-        PendingIntent viewPendingIntent =
-                PendingIntent.getActivity(getApplicationContext(), 1, viewIntent, 0);
-
-
-        // Notification channel ID is ignored for Android 7.1.1
-        // (API level 25) and lower.
-        mNotificationBuilder =
-                new NotificationCompat.Builder(getApplicationContext(), id)
-                        .setOngoing(true)
-                        .setContentIntent(viewPendingIntent)
-                        .setFullScreenIntent(viewPendingIntent, true)
-                        .setSmallIcon(R.drawable.stumble_logo_mobile)
-                        .setContentTitle(getString(R.string.fall_detected))
-                        .setContentText(getString(R.string.is_user_okay))
-                        .setPriority(NotificationCompat.PRIORITY_HIGH)
-                        .setDefaults(NotificationCompat.DEFAULT_ALL)
-                        .setAutoCancel(true);
 
     }
 
@@ -112,15 +85,8 @@ public class FallDetectionService extends IntentService implements SensorEventLi
         //Log.d("SensorValues", "Y Value: " + Float.toString(y));
         Log.d("SensorValues", "Z Value: " + Float.toString(z));
 
-        if (z < 0.0f && z > -7.4f) {
+        if (z < -5.0f && z > -7.4f) {
             Log.d("FallDetectionService", "Fall! Z = " + Float.toString(z));
-
-            // Get an instance of the NotificationManager service
-            NotificationManagerCompat notificationManager =
-                    NotificationManagerCompat.from(this);
-
-            // Issue the notification with notification manager.
-            notificationManager.notify(NOTIFICATION_ID, mNotificationBuilder.build());
             Intent fallIntent = new Intent("gameofphones.stumble.action.FALL_DETECTED");
             sendBroadcast(fallIntent);
         }
