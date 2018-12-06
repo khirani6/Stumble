@@ -15,6 +15,10 @@ public class ECActivity extends AppCompatActivity {
     private ImageButton mAddButton;
 
     ArrayList<EmergencyContact> templateNamesArr = new ArrayList<>();
+
+    EmergencyContact komal = new EmergencyContact("Komal", "Hirani", "8322473858", "8322473858");
+
+
     String names = "KOMAL HIRANI";
 
 
@@ -32,9 +36,7 @@ public class ECActivity extends AppCompatActivity {
 
         User user = userTracker.getCurrentUser();
 
-        for (EmergencyContact name : user.getEmergencyContacts()) {
-            templateNamesArr.add(name);
-        }
+        templateNamesArr.add(komal);
 
         ECListAdapter ecListAdapter = new ECListAdapter(this, templateNamesArr);
 
