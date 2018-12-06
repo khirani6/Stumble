@@ -16,7 +16,7 @@ public class ECActivity extends AppCompatActivity {
 
     ArrayList<EmergencyContact> templateNamesArr = new ArrayList<>();
 
-    EmergencyContact komal = new EmergencyContact("Komal", "Hirani", "8322473858", "8322473858");
+    EmergencyContact komal = new EmergencyContact("Komal", "Hirani", "8322473858");
 
 
     String names = "KOMAL HIRANI";
