@@ -1,5 +1,11 @@
 package gameofphones.gatech.stumble;
 
+import android.net.Uri;
+import android.support.annotation.Nullable;
+import android.util.Log;
+
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -7,6 +13,8 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -14,17 +22,31 @@ public class NetworkConnection {
 
     public static final String GET = "GET";
     public static final String POST = "POST";
+    public static final String PUT = "PUT";
 
     public static final String CREATE_USER = "https://thawing-cove-12717.herokuapp.com/user/create";
     public static final String FIND_USER =
             "https://thawing-cove-12717.herokuapp.com/user/findbyemail";
 
-    /**
-     * Given a URL, sets up a connection and gets the HTTP response body from the server.
-     * If the network request is successful, it returns the response body in String form. Otherwise,
-     * it will throw an IOException.
-     */
-    public static String connect(URL url, String restVerb, String body) throws IOException {
+    public static String addECToUser(EmergencyContact ec, User user) throws IOException {
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("https")
+                .authority("thawing-cove-12717.herokuapp.com")
+                .appendPath("user")
+                .appendPath("addEmergencyContactToUser")
+                .appendPath(user.getEmail());
+        String body = new Gson().toJson(ec);
+        Log.d("InitialEC", body);
+        HashMap<String, String> params = new HashMap<>();
+//        params.put("id", user.getEmail());
+        String url = builder.build().toString();
+        Log.d("InitialEC", url);
+        URL endpoint = new URL(url);
+        return connect(endpoint, PUT, body, params);
+    }
+
+    public static String connect(
+            URL url, String restVerb, String body, @Nullable Map<String, String> params) throws IOException {
         InputStream stream = null;
         HttpsURLConnection connection = null;
         String result = null;
@@ -36,10 +58,14 @@ public class NetworkConnection {
             connection.setConnectTimeout(3000);
             // For this use case, set HTTP method to GET.
             connection.setRequestMethod(restVerb);
-            // Already true by default but setting just in case; needs to be true since this request
-            // is carrying an input (response) body.
 
-            if (restVerb.equals(POST)) {
+            if (params != null) {
+                for (String key : params.keySet()) {
+                    connection.addRequestProperty(key, params.get(key));
+                }
+            }
+
+            if (restVerb.equals(POST) || restVerb.equals(PUT)) {
                 connection.setDoOutput(false);
                 connection.setRequestProperty("Content-Type","application/json");
                 OutputStream os = connection.getOutputStream();
@@ -74,6 +100,16 @@ public class NetworkConnection {
             }
         }
         return result;
+    }
+
+
+    /**
+     * Given a URL, sets up a connection and gets the HTTP response body from the server.
+     * If the network request is successful, it returns the response body in String form. Otherwise,
+     * it will throw an IOException.
+     */
+    public static String connect(URL url, String restVerb, String body) throws IOException {
+        return connect(url, restVerb, body, null);
     }
 
     /**

@@ -50,6 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
                     String lastName = lastNameField.getText().toString();
                     String email = emailField.getText().toString();
                     User user = new User(firstName, lastName, email);
+                    UserTracker.getInstance().setCurrentUser(user);
                     String userJson = new Gson().toJson(user);
                     new SignUpTask().execute(NetworkConnection.CREATE_USER, userJson);
                 }
