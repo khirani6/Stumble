@@ -35,6 +35,11 @@ public class EmergencyContact {
         mPhoneNumber = PhoneNumber;
     }
 
+    @Override
+    public String toString() {
+        return mFirstName + " " + mLastName;
+    }
+
     public String getFirstName() {
         return mFirstName;
     }

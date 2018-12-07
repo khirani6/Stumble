@@ -21,8 +21,6 @@ public class ECActivity extends AppCompatActivity {
 
     String names = "KOMAL HIRANI";
 
-
-
     ListView ecListView;
 
     //Been using this tutorial for doing this: https://appsandbiscuits.com/listview-tutorial-android-12-ccef4ead27cc
