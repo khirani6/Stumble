@@ -35,6 +35,13 @@ public class EmergencyContact {
         mPhoneNumber = PhoneNumber;
     }
 
+    //altered toString so that it displays correctly in the ListView, not the weird object name
+    @Override
+    public String toString() {
+        return mFirstName + " " + mLastName;
+    }
+
+
     public String getFirstName() {
         return mFirstName;
     }

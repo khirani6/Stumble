@@ -8,11 +8,18 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class ECActivity extends AppCompatActivity {
 
     private ImageButton mAddButton;
 
-    String[] templateNamesArr = {"Komal Hirani"};
+    //changed to hold EC's not Strings
+    ArrayList<EmergencyContact> templateNamesArr = new ArrayList<>();
+
+    //this is just for testing and doesn't really matter
+    EmergencyContact komal = new EmergencyContact("Komal", "Hirani", "8322473858");
+    String names = "KOMAL HIRANI";
 
 
     ListView ecListView;
@@ -23,6 +30,9 @@ public class ECActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ec);
+
+        //populate test user for testing
+        templateNamesArr.add(komal);
 
         ECListAdapter ecListAdapter = new ECListAdapter(this, templateNamesArr);
 
@@ -44,8 +54,8 @@ public class ECActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 Intent intent = new Intent(ECActivity.this, ECDetailActivity.class);
-                String message = templateNamesArr[position];
-                intent.putExtra("name", message);
+                //String message = templateNamesArr[position];
+                //intent.putExtra("name", message);
                 startActivity(intent);
 
             }
